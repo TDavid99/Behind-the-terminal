@@ -54,11 +54,49 @@ ${renderLink(data.license)}
 
 ## Installations (Instructions)
 
-For instructions, run these comman
+For instructions, run these commands:
+\`\`\`
+${data.testInstructions}
+\`\`\`
 
+## Usage 
+${data.usage}
+
+${renderSection(data.license)}
+
+
+##Contributions
+
+${data.contributions}
+
+Reach me at ${data.email}
+
+##Test 
+
+to run test, Run these commands:
+
+\`\`\`
+${data.testInstructions}
 
 `;
 }
 
+function renderLicenseLink(license) {
+  if (license !== "none") {
+    return(
+      `\n* [License](#license)\n`
+    )
+  }
+  return ''
+}
 
+function renderSection(license)
+if (license !=="none") {
+  return (
+    `## licence 
+    Copyright © ${license}. All rights reserved. 
+      
+    Licensed under the ${license} license.` 
+  )
+}
 module.exports = generateMarkdown;

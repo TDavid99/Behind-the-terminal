@@ -1,7 +1,7 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  return `![License](https://img.shields.io/badge/Licence-${license}-green.svg)`;
+  return `![License](https://img.shields.io/badge/Licence-${license}-blue.svg)`;
 
 }
 
@@ -9,13 +9,13 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if(license==="MPL_2.0"){
+  if (license === "MPL_2.0") {
     return "https://opensource.org/licenses/MPL-2.0";
-  }else if (license=== "EPL_1.0"){
+  } else if (license === "EPL_1.0") {
     return "https://opensource.org/licenses/EPL-1.0";
   }
-  if (license==="none"){
-    return(
+  if (license === "none") {
+    return (
       `\n*[License](license)\n`
     )
   }
@@ -23,17 +23,21 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
-  if (license){
-    return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`;
-  }else {
-    return "";
+  function renderLicenseSection(license) {
+    if (license) {
+      return `${renderLicenseBadge(license)}
+    ${renderLicenseLink(license)}`;
+    } else {
+      return "";
+    }
   }
-  }
+  console.log(renderLicenseSection)
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `# ${data.ProjectName}
+
+
   ${renderBadge(data.license)}
 
 ##Description
@@ -41,23 +45,15 @@ ${data.description}
 
 
 ##Table of Contents
-
 *[Installations](#InstallInstructions)
-
 *[Usage](#usage)
-
-${renderLink(data.license)}
-
 *[Contributions](#contributions)
-
 *[TestInstructions](#test)
+*[License](#license)
+*[Questions ](#questions)
 
 ## Installations (Instructions)
-
-For instructions, run these commands:
-\`\`\`
 ${data.testInstructions}
-\`\`\`
 
 ## Usage 
 ${data.usage}
@@ -66,37 +62,21 @@ ${renderSection(data.license)}
 
 
 ##Contributions
-
 ${data.contributions}
 
-Reach me at ${data.email}
 
 ##Test 
-
-to run test, Run these commands:
-
-\`\`\`
 ${data.testInstructions}
 
-`;
-}
+##Questions
+for any questions reach me at ${data.email}
 
-function renderLicenseLink(license) {
-  if (license !== "none") {
-    return(
-      `\n* [License](#license)\n`
-    )
-  }
-  return ''
-}
+##License
+The licenses for work is under the ${data.license}
+} license. More info can be found at
+${renderLink(data.license)}.
 
-function renderSection(license)
-if (license !=="none") {
-  return (
-    `## licence 
-    Copyright © ${license}. All rights reserved. 
-      
-    Licensed under the ${license} license.` 
-  )
-}
+`}
+
+
 module.exports = generateMarkdown;

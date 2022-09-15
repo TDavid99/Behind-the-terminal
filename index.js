@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const generateMarkdown = require("./utils/generateMarkdown");
+const utils = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -54,10 +54,17 @@ const questions = [
         options: [
             'MPL 2.0',
              'EPL 1.0',
-            'MIT']
+            'MIT'],
+    
+        validate: (licenseInput) => {
+            if (licenseInput) {
+                return true;
+            }else{
+                console.log("select a license.")
+            }
+            }
+        },
 
-            
-    },
 ];
 
 // TODO: Create a function to write README file
@@ -67,11 +74,9 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-        .then(anwsers => {
-            console.log("inquierfinshed")
-            writeToFile("./README.md", generateMarkdown({ selectedData,generateMarkdown }))
-            console.log(anwsers);
+    inquirer.prompt(questions).then((Anwsers) => {
+            writeToFile("./README.md", generateMarkdown({ ... Anwsers }));
+        
         });
 }
 

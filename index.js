@@ -51,7 +51,12 @@ const questions = [
         type: "list",
         name: "license",
         message: "What license would you like to present your project under?",
-        options: ['MPL 2.0', 'EPL 1.0', 'none']
+        options: [
+            'MPL 2.0',
+             'EPL 1.0',
+            'MIT']
+
+            
     },
 ];
 
@@ -65,7 +70,7 @@ function init() {
     inquirer.prompt(questions)
         .then(anwsers => {
             console.log("inquierfinshed")
-            writeToFile("README.md", generateMarkdown({ selectedData }))
+            writeToFile("./README.md", generateMarkdown({ selectedData,generateMarkdown }))
             console.log(anwsers);
         });
 }

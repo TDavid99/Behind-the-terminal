@@ -1,5 +1,8 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
+function generateMarkdown(data) {
+  return`# ${data.ProjectName}`
+}
 function renderLicenseBadge(license) {
   return `![License](https://img.shields.io/badge/Licence-${license}-blue.svg)`;
 
@@ -14,10 +17,8 @@ function renderLicenseLink(license) {
   } else if (license === "EPL_1.0") {
     return "https://opensource.org/licenses/EPL-1.0";
   }
-  if (license === "none") {
-    return (
-      `\n*[License](license)\n`
-    )
+  if (license === "MIT") {
+    return "https://opensource.org/licenses/MIT";
   }
 }
 
@@ -31,7 +32,7 @@ function renderLicenseLink(license) {
       return "";
     }
   }
-  console.log(renderLicenseSection)
+
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
